@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title> Billing System </title>
+
 <style>
 
     /* CSS for slide bar */
@@ -163,6 +167,7 @@
     border-radius: 5px;
     margin-left: 10%;
     margin-right: 10%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.237);
     
 
 }
@@ -172,7 +177,7 @@
         justify-content: left;
         border: 1px solid;
         border-radius: 5px;
-        box-shadow: 0 0 10px rgb(66, 66, 66);
+        
         
     }
 
@@ -222,6 +227,12 @@ input[type="number"] {
   text-align: center;
   margin-top: 20px;
 }
+
+.button{
+    text-align: center;
+    align-items: end;
+    margin-right: 2px;
+}
             
         
 
@@ -230,7 +241,10 @@ input[type="number"] {
 
 </head>
 
-<body style="background-color: rgba(28, 195, 195, 0.945);">
+<body style="background-color: rgba(28, 195, 195, 0.945);
+ background-image: url(D:\sem_3\fee projects\billing_system\bg_doodle.jpg); 
+ background-repeat: repeat;
+ background-size: auto;">
 
     <!-- Slider Bar -->
 
@@ -269,8 +283,8 @@ input[type="number"] {
 
          <!--slider khatam...........-->
 
-         <h1 style="text-align: center; color: rgb(255, 255, 255);font-size: 70px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                 Billy Billing Machine</h1>
+         <h1 style="text-align: center; color: rgb(255, 255, 255);font-size: 70px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-shadow: 0 0 10px rgba(0, 0, 0, 0.237) ;">
+                Billing Machine</h1>
 
                  <div class="Billing-container grid">
                     <div class="column">
@@ -281,30 +295,42 @@ input[type="number"] {
                             <div class="item-list">
                               <div class="item-name">Chips</div>
                               
-                              <button onclick="updateTotal()" style="margin-left: 78px;">+</button>
+                              <button onclick="add_1()" style="margin-left: 78px;">+</button>
                               <input type="number" id="chips-quantity" value="0" style="margin-left: 10px;">
-                              <button onclick="updateTotal()" style="margin-left: 10px;">-</button>
+                              <button onclick="sub_1()" style="margin-left: 10px;">-</button>
                             </div>
                             <div class="item-list">
                               <div class="item-name">Biscuit</div>
                               
-                              <button onclick="updateTotal()" style="margin-left: 70px;" >+</button>
+                              <button onclick="add_2()" style="margin-left: 70px;" >+</button>
                               <input type="number" id="biscuit-quantity" value="0" style="margin-left: 10px;">
-                              <button onclick="updateTotal()" style="margin-left: 10px;">-</button>
+                              <button onclick="sub_2()" style="margin-left: 10px;">-</button>
                             
                             </div>
 
                             <div class="item-list">
                               <div class="item-name">Fruits</div>
                               
-                              <button onclick="updateTotal()" style="margin-left: 77px;">+</button>
-                              <input type="number" id="fruits-quantity " value="0"  style="margin-left: 10px;">
-                              <button onclick="updateTotal()"  style="margin-left: 10px;">-</button> 
+                              <button onclick="add_3()" style="margin-left: 77px;">+</button>
+                              <input type="number" id="fruits-quantity" value="0"  style="margin-left: 10px;">
+                              <button onclick="sub_3()"  style="margin-left: 10px;">-</button> 
+
+
+                              
+                          
+                            </div>
+                            <div class="button">
+                            
+                                <button type="button" class="btn btn-primary" onclick="updateTotal()">Done</button>
+                            
+                          </div>
+
+
+                            
+                            
+                            
                             </div>
                             
-                            
-                            
-                            </div>
                     </div>
                           
                         
@@ -327,29 +353,51 @@ input[type="number"] {
                           
                           <div class="total">
                             <div>Discount:
-                                <input type="number" id="discount-quantity " value="0"  style="margin-left: 10px;">%
+                                <input type="number" id="discount-quantity" value="0"  style="margin-left: 10px; width: 40px;">%
                             </div>
                             <br>
-                            <div>Total: <span id="totalAmount">0</span></div>
+                            <div>Total: <span id="total-Amount"></span></div>
 
-                            <h1><div>Final Total: <span id="finalAmount">0</span></div></h1>
+                            <h1><div>Final Total: <span id="final-Amount"></span></div></h1>
 
                           </div>
-                        </div>
+                          <div class="button">
+                          <button type="button" class="btn btn-success"> Save</button>
+                        <button type="button" class="btn btn-warning">Print</button>
+                        <button type="button" class="btn btn-danger">Cancel</button>
                     </div>
+                        </div>
+
+                    </div>                 
                  </div>
 
 
                  <script>
-                    function updateTotal() {
-                      const chipsQuantity = parseInt(document.getElementById("chips-quantity").value) || 0;
-                      const biscuitQuantity = parseInt(document.getElementById("biscuit-quantity").value) || 0;
-                      const fruitsQuantity = parseInt(document.getElementById("fruits-quantity").value) || 0;
-                    
-                      const totalAmount = (chipsQuantity * 25) + (biscuitQuantity * 20) + (fruitsQuantity * 50);
-                      const finalAmount = totalAmount - (totalAmount * (parseInt(document.getElementById("discount-quantity").value) || 0) / 100);
 
-                      document.getElementById("total-amount").textContent = totalAmount.toFixed(2);
+
+
+
+                    function updateTotal() {
+                      var chipsQuantity = parseInt(document.getElementById("chips-quantity").value) || 0;
+                      var biscuitQuantity = parseInt(document.getElementById("biscuit-quantity").value) || 0;
+                      var fruitsQuantity = parseInt(document.getElementById("fruits-quantity").value) || 0;
+                    
+                      var totalAmount = (chipsQuantity * 25) + (biscuitQuantity * 20) + (fruitsQuantity * 50);
+
+                    //   document.write(totalAmount);
+                     
+                      var finalAmount = totalAmount - (totalAmount * (parseInt(document.getElementById("discount-quantity").value) || 0) / 100);
+                      
+                    //   document.write(finalAmount);
+
+                      document.getElementById("total-Amount").innerHTML = totalAmount;
+                      document.getElementById("final-Amount").innerHTML = finalAmount;
+                    }
+
+                    function add_1(){
+                      var chipsQuantity = parseInt(document.getElementById("chips-quantity").value) || 0;
+                      chipsQuantity = chipsQuantity + 1;
+                      document.getElementById("chips_quantity").innerHTML = chipsQuantity;
                     }
                     </script>
     
