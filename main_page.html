@@ -315,6 +315,8 @@ input[type="number"] {
                               <input type="number" id="fruits-quantity" value="0"  style="margin-left: 10px;">
                               <button onclick="sub_3()"  style="margin-left: 10px;">-</button> 
 
+                              
+
 
                               
                           
@@ -341,11 +343,11 @@ input[type="number"] {
                                                
                         <div class="details">
                             <label for="name">Name:</label>
-                            <input type="text" id="name">
+                            <input type="text" id="name" required>
                             <label for="number">Number:</label>
-                            <input type="number" id="number">
+                            <input type="tel" id="number" required>
                             <label for="bday">Birthday:</label>
-                            <input type="date" id="bday">
+                            <input type="date" id="bday" required>
                           </div>
 
                           <br><br>
@@ -362,8 +364,8 @@ input[type="number"] {
 
                           </div>
                           <div class="button">
-                          <button type="button" class="btn btn-success"> Save</button>
-                        <button type="button" class="btn btn-warning">Print</button>
+                          <button type="button" class="btn btn-success"> Pay-cash</button>
+                        <button type="button" class="btn btn-warning" onclick= open_payment_gate()>Pay-online</button>
                         <button type="button" class="btn btn-danger">Cancel</button>
                     </div>
                         </div>
@@ -394,11 +396,51 @@ input[type="number"] {
                       document.getElementById("final-Amount").innerHTML = finalAmount;
                     }
 
+
+                    //addssssssss
                     function add_1(){
                       var chipsQuantity = parseInt(document.getElementById("chips-quantity").value) || 0;
                       chipsQuantity = chipsQuantity + 1;
-                      document.getElementById("chips_quantity").innerHTML = chipsQuantity;
+                      document.getElementById("chips-quantity").value = chipsQuantity;
                     }
+
+                    function add_2(){
+                      var biscuitquantity = parseInt(document.getElementById("biscuit-quantity").value) || 0;
+                      biscuitquantity = biscuitquantity + 1;
+                      document.getElementById("biscuit-quantity").value = biscuitquantity;
+                    }
+
+                    function add_3(){
+                      var fruitsQuantity = parseInt(document.getElementById("fruits-quantity").value) || 0;
+                      fruitsQuantity = fruitsQuantity + 1;
+                      document.getElementById("fruits-quantity").value = fruitsQuantity;
+                    }
+
+
+                    //subtractssssssssss
+
+                    function sub_1(){
+                      var chipsQuantity = parseInt(document.getElementById("chips-quantity").value) || 0;
+                      chipsQuantity = chipsQuantity - 1;
+                      document.getElementById("chips-quantity").value = chipsQuantity;
+                    }
+
+                    function sub_2(){
+                      var biscuitquantity = parseInt(document.getElementById("biscuit-quantity").value) || 0;
+                      biscuitquantity = biscuitquantity - 1;
+                      document.getElementById("biscuit-quantity").value = biscuitquantity;
+                    }
+
+                    function sub_3(){
+                      var fruitsQuantity = parseInt(document.getElementById("fruits-quantity").value) || 0;
+                      fruitsQuantity = fruitsQuantity - 1;
+                      document.getElementById("fruits-quantity").value = fruitsQuantity;
+                    }
+
+                    function open_payment_gate(){  
+                        window.location.href = "payment_gateway.html";
+                    }
+
                     </script>
     
 </body>
