@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2ed9d3; /* Color from the attached image */
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #e6f7f8; /* Light blue similar to the form background */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2ed9d3; /* White text color */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc; /* This ensures the lines (borders) are visible */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #00a2a7; /* Header color matching button tones */
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #d0f1f0; /* Light hover effect for rows */
+        }
+
+        .details-row {
+            background-color: #f9f9f9; /* Light background for details */
+            font-size: 0.9em;
+        }
+
+        .details-row td {
+            border-top: 1px solid #ccc; /* Maintain border for details row */
+        }
+
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+
+         /* CSS for slide bar */
+         .slide{
+            height: 100%;
+            width: 25%;
+            position: absolute;
+            background-color: rgb(56, 55, 63);
+            transition: 0.5s ease;
+            font-family: 'poppins',sans-serif;
+            transform: translateX(-306px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.197);
+            border-radius: 5px;
+        }
+
+        .menu_title{
+            color:rgb(35, 110, 163);
+            font-weight: 800;
+            text-align: left;
+            padding: 10px 0;
+            padding-right: 30px;
+            pointer-events: none;
+            margin-left: 30px;
+            font-size: 70px;
+        }
+
+        ul{
+            background-color: rgb(56, 55, 63);
+            border-radius: 2px;
+        }
+
+        ul li{
+            font-size: larger;
+            list-style: none;
+            text-align: left;
+        }
+
+        ul li:hover a{
+            background-color: aliceblue;
+            border-radius: 2px;
+        }
+
+        ul li a{
+            color: rgba(28, 195, 195, 0.945);
+            font-weight: 500;
+            padding: 7px 0;
+            display: block;
+            text-transform: capitalize;
+            text-decoration: none;
+            transition: 0.2s ease-out;
+        }
+
+        ul li a i{
+            width: 40px;
+            text-align: left;
+        }
+
+        .menu_checkbox{
+            display: none;
+            visibility:visible;
+        }
+
+        .toggle{
+            position: absolute;
+            height: 30px;
+            width:  30px;
+            top: 20px;
+            left: auto;
+            z-index: 1;
+            cursor: pointer;
+            border-radius: 2px;
+            background-color: rgb(56, 55, 63);
+            box-shadow: 0 0 10px rgb(66, 66, 66);
+            margin-top: 35px;
+            margin-left: 10px;
+        }
+
+        .toggle .common{
+            position: absolute;
+            height: 2px;
+            width:20px;
+            background-color: aqua;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+
+        .toggle .top_line{
+            top:30%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .toggle .middle_line{
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .toggle .bottom_line{
+            top:70%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        input:checked ~ .toggle .top_line{
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(45deg);
+        }
+
+        input:checked ~ .toggle .bottom_line{
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(-45deg);
+        }
+
+        input:checked ~ .toggle .middle_line{
+            opacity: 0;
+            transform: translate(20px);
+        }
+
+        input:checked ~ .slide{
+            transform: translateX(0);
+            box-shadow: rgba(0, 0, 0, 0.089);
+        }
+    </style>
+    <script>
+        function toggleDetails(row) {
+            var nextRow = row.nextElementSibling;
+            if (nextRow.style.display === "none" || nextRow.style.display === "") {
+                nextRow.style.display = "table-row"; // Show the details row
+            } else {
+                nextRow.style.display = "none"; // Hide the details row
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Slider Bar -->
+    <label>
+        <input class="menu_checkbox" type="checkbox">
+        <div class="toggle">
+            <span class="top_line common"></span>
+            <span class="middle_line common"></span>
+            <span class="bottom_line common"></span>
+        </div>
+        <div class="slide">
+            <h1 class="menu_title">Menu</h1>
+            <ul>
+                <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#clients"><i class="fas fa-address-book"></i> Clients Info</a></li>
+                <li><a href="#qr"><i class="fas fa-qrcode"></i> QR Scanner</a></li>
+                <li><a href="#contact"><i class="fas fa-mobile-phone"></i> Contact Us</a></li>
+                <li><a href="#settings"><i class="fas fa-cogs"></i> Settings</a></li>
+                <br><br>
+                <p style="color: rgba(240, 248, 255, 0.503); font-size: small;">
+                    <i><b>Blue Banana services,</b><br>Chitkara University,<br>Rajpura, Punjab</i>
+                </p>
+            </ul>
+        </div>
+    </label>
+    <!-- Slider End -->
+
+    <div class="container">
+        <h1>PAYMENT HISTORY</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Payment ID</th>
+                    <th>Name</th>
+                    <th>Amount (₹)</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="toggleDetails(this)">
+                    <td>2024-09-15</td>
+                    <td>PAY12345</td>
+                    <td>Amit Sharma</td>
+                    <td>₹150</td>
+                    <td>Credit Card</td>
+                    <td>Completed</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Items Bought:</strong>
+                        <ul>
+                            <li>Chips: ₹50</li>
+                            <li>Biscuits: ₹20</li>
+                            <li>Fruits: ₹80</li>
+                        </ul>
+                        <strong>Discount:</strong> 10%
+                    </td>
+                </tr>
+
+                <tr onclick="toggleDetails(this)">
+                    <td>2024-10-05</td>
+                    <td>PAY12346</td>
+                    <td>Neha Gupta</td>
+                    <td>₹250</td>
+                    <td>Upi</td>
+                    <td>Pending</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Items Bought:</strong>
+                        <ul>
+                            <li>Vegetables: ₹100</li>
+                            <li>Rice: ₹150</li>
+                        </ul>
+                        <strong>Discount:</strong> 5%
+                    </td>
+                </tr>
+
+                <tr onclick="toggleDetails(this)">
+                    <td>2024-10-12</td>
+                    <td>PAY12347</td>
+                    <td>Rahul Verma</td>
+                    <td>₹100</td>
+                    <td>Debit Card</td>
+                    <td>Failed</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Items Bought:</strong>
+                        <ul>
+                            <li>Milk: ₹40</li>
+                            <li>Bread: ₹30</li>
+                            <li>Butter: ₹30</li>
+                        </ul>
+                        <strong>Discount:</strong> 0%
+                    </td>
+                </tr>
+
+                <tr onclick="toggleDetails(this)">
+                    <td>2024-10-15</td>
+                    <td>PAY12348</td>
+                    <td>Pooja Singh</td>
+                    <td>₹300</td>
+                    <td>Cash</td>
+                    <td>Completed</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Items Bought:</strong>
+                        <ul>
+                            <li>Soap: ₹50</li>
+                            <li>Shampoo: ₹100</li>
+                            <li>Conditioner: ₹150</li>
+                        </ul>
+                        <strong>Discount:</strong> 15%
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
