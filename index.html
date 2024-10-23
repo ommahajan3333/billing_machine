@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="https://example.com/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <button id="loginBtn" class="toggle-btn active">Login</button>
+            <button id="signupBtn" class="toggle-btn">Sign Up</button>
+        </div>
+        <div class="form-container">
+            <div class="form-box active" id="loginForm">
+                <h2>Login</h2>
+                <form>
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn" href="idx.html">Login</button>
+                </form>
+            </div>
+
+            <div class="form-box hidden" id="signupForm">
+                <h2>Sign Up</h2>
+                <form>
+                    <div class="input-group">
+                        <label for="signupUsername">Username</label>
+                        <input type="text" id="signupUsername" placeholder="Choose a username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="btn" href="idx.html">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

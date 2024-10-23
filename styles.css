@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html,body {
+    overflow: hidden;
+    height: 100%;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
+    backdrop-filter: blur(8px); /* Adjusted blur effect */
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1; 
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 200px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #00a2a7;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+
+.toggle-btn.active {
+    border-bottom: 2px solid black;
+}
+
+.form-container {
+    padding: 20px;
+}
+
+.form-box {
+    display: none; /* Hide forms initially */
+}
+
+.form-box.active {
+    display: block; /* Show active form */
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #00a2a7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #4c636e;
+}

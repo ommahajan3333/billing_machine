@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            padding: 1rem;
+            background-color: #2193b0;
+            color: white;
+            text-align: center;
+        }
+
+        header input {
+            width: 80%;
+            padding: 0.7rem;
+            border-radius: 1rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            max-width: 1500px;
+            margin: auto;
+        }
+        .lftm {
+            width: 70rem;
+        }
+        .lftm, .ryt {
+            background-color: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .lftm {
+            width: 75%;
+        }
+
+        .ryt {
+            width: 35%;
+            margin-left: 0rem;
+            position: relative;
+            left: 2rem;
+        }
+
+        .lft, .lftd {
+            margin-bottom: 1.5rem;
+            border-radius: 1rem;
+            padding: 1rem;
+            background-color: #e8e8e8;
+        }
+
+        h1, h2 {
+            margin: 0;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #2193b0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            left: 4.8rem;
+            width: 120px;
+        }
+
+        .quantity-selector button {
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            background-color: #2193b0;
+            color: white;
+            cursor: pointer;
+        }
+
+        .quantity-selector input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            margin: 0 0.5rem;
+        }
+
+        .total-amount, .discount-amount, .final-total {
+            text-align: right;
+            font-weight: 600;
+            position: relative;
+            left: -4.5rem;
+        }
+
+        
+        .cpn {
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 5rem;
+            height: 12rem;
+        }
+
+        .cpnbtn {
+            margin-top: 3rem;
+        }
+
+        .apply {
+            position: relative;
+            top: 1rem;
+            left: 6.5rem;
+            width: 10rem;
+        }
+        .cpn input {
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            width: calc(100% - 20px);
+            margin-bottom: 1rem;
+            border: none;
+            outline: none;
+        }
+
+        .cpn button {
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cpn button:hover {
+            background-color: #444;
+        }
+        
+        .pay-button {
+            position: relative;
+            top: 2rem;
+            width: 100%;
+            padding: 0.7rem;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .pay-button:hover {
+            background-color: #444;
+        }
+
+        .itm3 {
+            position: relative;
+            left: -13rem;
+        }
+
+        .name, .phone ,.date {
+            border-radius: 1rem;
+            height: 1.5rem;
+            border-style: solid;
+        }
+
+        .cpnb1 {
+            color: white;
+        }
+
+.slide {
+    height: 100%;
+    width: 22%;
+    position: absolute;
+    background-color: rgb(56, 55, 63);
+    transition: 0.5s ease;
+    font-family: 'poppins', sans-serif;
+    transform: translateX(-306px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.197);
+    border-radius: 5px;
+}
+
+.menu_title {
+    color: rgb(35, 110, 163);
+    font-weight: 800;
+    text-align: left;
+    padding: 10px 0;
+    position: relative;
+    left: 1rem;
+    padding-right: 30px;
+    pointer-events: none;
+    margin-left: 30px;
+    font-size: 70px;
+}
+
+ul {
+    background-color: rgb(56, 55, 63);
+    border-radius: 2px;
+}
+
+ul li {
+    font-size: larger;
+    list-style: none;
+    text-align: left;
+}
+
+ul li:hover a {
+    background-color: aliceblue;
+    border-radius: 2px;
+}
+
+ul li a {
+    color: rgba(28, 195, 195, 0.945);
+    font-weight: 500;
+    padding: 7px 0;
+    display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+}
+
+ul li a i {
+    width: 40px;
+    text-align: left;
+}
+
+.menu_checkbox {
+    display: none;
+    visibility: visible;
+}
+
+.toggle {
+    position: absolute;
+    height: 30px;
+    width: 1px;
+    top: 20px;
+    left: auto;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: rgb(56, 55, 63);
+    box-shadow: 0 0 10px rgb(66, 66, 66);
+    margin-top: 35px;
+    margin-left: 10px;
+}
+
+.toggle .common {
+    position: absolute;
+    height: 2px;
+    width: 20px;
+    background-color: aqua;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.toggle .top_line {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .middle_line {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .bottom_line {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input:checked ~ .toggle .top_line {
+    left: 2px;
+    top: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+}
+
+input:checked ~ .toggle .bottom_line {
+    left: 2px;
+    top: 14px;
+    width: 25px;
+    transform: rotate(-45deg);
+}
+
+input:checked ~ .toggle .middle_line {
+    opacity: 0;
+    transform: translate(20px);
+}
+
+input:checked ~ .slide {
+    transform: translateX(0);
+    box-shadow: rgba(0, 0, 0, 0.089);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <label>
+    <input class="menu_checkbox" type="checkbox">
+    <div class="toggle">
+        <span class="top_line common"></span>
+        <span class="middle_line common"></span>
+        <span class="bottom_line common"></span>
+    </div>
+    <div class="slide">
+        <h1 class="menu_title">Menu</h1>
+        <ul>
+            <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="#clients"><i class="fas fa-address-book"></i> Clients Info</a></li>
+            <li><a href="#qr"><i class="fas fa-qrcode"></i> QR Scanner</a></li>
+            
+            <br><br>
+            <p style="color: rgba(240, 248, 255, 0.503); font-size: small;">
+                <i><b>Blue Banana services,</b><br>Chitkara University,<br>Rajpura, Punjab</i>
+            </p>
+        </ul>
+    </div>
+</label>
+
+        <input placeholder="Search" type="text">
+    </header>
+    <section>
+        <div class="main">
+            <div class="lftm">
+                <div class="lft">
+                    <h2>Shopping Cart</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row">
+                                <td>Coca Cola</td>
+                                <td>20</td>
+                                <td>
+                                    <div class="quantity-selector">
+                                        <button onclick="decreaseQuantity(this)">-</button>
+                                        <input type="text" value="1" onchange="updateAmount(this)">
+                                        <button onclick="increaseQuantity(this)">+</button>
+                                    </div>
+                                </td>
+                                <td><span class="amount">20</span></td>
+                            </tr>
+                            <tr class="row">
+                                <td>Refined Oil (1 kg)</td>
+                                <td>238</td>
+                                <td>
+                                    <div class="quantity-selector">
+                                        <button onclick="decreaseQuantity(this)">-</button>
+                                        <input type="text" value="1" onchange="updateAmount(this)">
+                                        <button onclick="increaseQuantity(this)">+</button>
+                                    </div>
+                                </td>
+                                <td><span class="amount">238</span></td>
+                            </tr>
+                            <tr class="row">
+                                <td>Lays (Blue)</td>
+                                <td>50</td>
+                                <td>
+                                    <div class="quantity-selector">
+                                        <button onclick="decreaseQuantity(this)">-</button>
+                                        <input type="text" value="1" onchange="updateAmount(this)">
+                                        <button onclick="increaseQuantity(this)">+</button>
+                                    </div>
+                                </td>
+                                <td><span class="amount">50</span></td>
+                            </tr>
+                            <tr class="row">
+                                <td>Maggi</td>
+                                <td>10</td>
+                                <td>
+                                    <div class="quantity-selector">
+                                        <button onclick="decreaseQuantity(this)">-</button>
+                                        <input type="text" value="1" onchange="updateAmount(this)">
+                                        <button onclick="increaseQuantity(this)">+</button>
+                                    </div>
+                                </td>
+                                <td><span class="amount">10</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="lftd">
+                    <h2>Cart Total</h2>
+                    <table>
+                        <tr>
+                            <td class="itm3">Cart Subtotal:</td>
+                            <td class="total-amount" id="cart-subtotal">0</td>
+                        </tr>
+                        <tr>
+                            <td class="itm3">Discount:</td>
+                            <td class="discount-amount" id="discount-amount">0</td>
+                        </tr>
+                        <tr>
+                            <td class="itm3">Cart Total:</td>
+                            <td class="final-total" id="cart-total">0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="ryt">
+                <h2>Customer Details</h2>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input class="name" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Phone:</td>
+                        <td><input class="phone" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td><input class="date" type="date"></td>
+                    </tr>
+                </table>
+                <div class="cpn">
+                    <h2 class="cpnb1">Coupon Code</h2>
+                    <input class="cpnbtn" id="coupon-code" type="text">
+                    <button class="apply" onclick="applyCoupon()">Apply</button>
+                </div>
+                <button class="pay-button">Pay</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function decreaseQuantity(button) {
+            const input = button.nextElementSibling;
+            let value = parseInt(input.value);
+            if (value > 0) {
+                value--;
+                input.value = value;
+                updateAmount(input);
+            }
+        }
+
+        function increaseQuantity(button) {
+            const input = button.previousElementSibling;
+            let value = parseInt(input.value);
+            value++;
+            input.value = value;
+            updateAmount(input);
+        }
+
+        function updateAmount(input) {
+            const quantity = parseInt(input.value);
+            const price = parseFloat(input.closest('tr').querySelector('td:nth-child(2)').innerText);
+            const amount = quantity * price;
+            input.closest('tr').querySelector('.amount').innerText = amount;
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            const amounts = document.querySelectorAll('.amount');
+            let subtotal = 0;
+            amounts.forEach(amount => {
+                subtotal += parseFloat(amount.innerText);
+            });
+            document.getElementById('cart-subtotal').innerText = subtotal;
+            document.getElementById('cart-total').innerText = subtotal; 
+        }
+
+        function applyCoupon() {
+    const couponCode = document.getElementById('coupon-code').value;
+    let discount = 0;
+
+    if (couponCode === 'DISCOUNT10') {
+        discount = 10;
+    } else if (couponCode === 'DISCOUNT20') {
+        discount = 20; 
+    } else {
+        alert('Invalid coupon code!');
+        return;
+    }
+
+    const subtotal = parseFloat(document.getElementById('cart-subtotal').innerText);
+    const discountAmount = (subtotal * discount) / 100;
+    const total = subtotal - discountAmount;
+
+    document.getElementById('discount-amount').innerText = discountAmount.toFixed(2);
+    document.getElementById('cart-total').innerText = total.toFixed(2);
+
+    alert('Coupon applied!');
+}
+    </script>
+</body>
+</html>
