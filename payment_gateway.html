@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<style>
-    
-    /* CSS for slide bar */
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Payment Gateway</title>
+    <style>
+
+        /* CSS for slide bar */
     .slide{
         height: 100%;
         width: 25%;
@@ -138,58 +142,16 @@
         transform: translateX(0);
         box-shadow: rgba(0, 0, 0, 0.089);
     }
-    .grid{
-    grid-template-columns: auto auto;
-    display: grid;
-    background-color:aliceblue;
-    padding: 5px;
-    border: 1px solid rgb(50, 49, 51);
-    border-radius: 5px;
-    margin-left: 10%;
-    margin-right: 10%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.237);
-    }
 
-    .QR_image{
-        width: 50%;
-        height: 60%;
-        margin-left: 15%;
-        margin-top: 10%;
-        border-radius: 3px;
-        
-    }
-
-    .column{
-        display: flex;
-        justify-content: left;
-        border: 1px solid;
-        border-radius: 5px;
-        
-        
-    }
-
-
-    /* column 1 ..........copy of testpage1 */
-
-
-    .container {
-        width: 50%;
-        margin: 0 auto;
-        /* border: 1px solid #343434; */
-        padding: 10px;
-        border-radius: 5px;
-        
-    }
-
-    h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-
-.container {
+        /*  -------------- slidemenu --------------------------end */
+        .container {
             display: flex;
-            height: 100vh; /* Adjust as needed */
+            height: 75vh; /* Adjust as needed */
+            width: 85vw;
+            margin-left: 18vb;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.237);
         }
         .left {
             flex: 3;
@@ -200,7 +162,7 @@
             justify-content: center;
         }
         .left img {
-            max-width: 50%;
+            max-width: 45%;
             height: auto;
         }
         .left p {
@@ -216,21 +178,30 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .right h2 {
+        .right h1 {
             font-weight: bold;
             text-align: center;
+            margin-bottom: 2px;
+            font-size: xx-large; 
         }
         .right table {
-            width: 100%;
+            align-self: center;
+            width: 90%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 2px;
+            border-radius: 15px;
+            overflow: hidden;
+            
         }
         .right table, .right th, .right td {
-            border: 1px solid black;
+            
+            border: 1px solid rgb(255, 0, 0);
+            
         }
         .right th, .right td {
             padding: 10px;
-            text-align: left;
+            text-align: center;
+            border: none;
         }
         .right .buttons {
             display: flex;
@@ -240,123 +211,105 @@
         .right .buttons button {
             padding: 10px 20px;
             font-size: 16px;
+            align-items: end;
+            margin-left: 80vb;
         }
-
-</style>
-
+    </style>
 </head>
-
 <body style="background-color: rgba(28, 195, 195, 0.945);
- background-image: url(D:\sem_3\fee projects\billing_system\bg_doodle.jpg); 
- background-repeat: repeat;
- background-size: auto;">
+background-image: url(D:\sem_3\fee projects\billing_system\bg_doodle.jpg); 
+background-repeat: repeat;
+background-size: auto;">
 
-    <!-- Slider Bar -->
+<!-- Slider Bar -->
 
-         <label>
+<label>
 
-            <input class="menu_checkbox" type="checkbox">
-            <div class="toggle">
-                <span class="top_line common"></span>
-                <span class="middle_line common"></span>
-                <span class="bottom_line common"></span>
+    <input class="menu_checkbox" type="checkbox">
+    <div class="toggle">
+        <span class="top_line common"></span>
+        <span class="middle_line common"></span>
+        <span class="bottom_line common"></span>
 
-            </div>
-
-
-            <div class="slide">
-                <h1 class="menu_title">
-                    Menu
-                </h1>
-                <ul>
-                    <li><a heref="#profile page"><i class="fas fa-user"></i> Profile</a></li>
-                    <li><a heref="#data page"><i class="fas fa-address-book"></i> Clients Info</a></li>
-                    <li><a heref="#Qr page"><i class=" fas fa-qrcode"></i> QR Scaner</a></li>
-                    <li><a heref="#mara page"><i class=" fas fa-mobile-phone"></i> Contact Us</a></li>
-                    <li><a heref="#setting page"><i class=" fas fa-cogs"></i> Settings</a></li>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <p style="color: rgba(240, 248, 255, 0.503); font-size: small;"><i><b>Blue Banana services,</b>
-                        <br>Chitkara University,
-                        <br>Rajpura ,Punjab
-                    </i><p>
-
-                
-                    
-                </ul>
-            </div>
-         </label>
+    </div>
 
 
-         <h1 style="text-align: center; color: rgb(255, 255, 255);font-size: 70px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-shadow: 0 0 10px rgba(0, 0, 0, 0.237) ;">
-            Payment Gateway</h1>
+    <div class="slide">
+        <h1 class="menu_title">
+            Menu
+        </h1>
+        <ul>
+            <li><a heref="#profile page"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a heref="#data page"><i class="fas fa-address-book"></i> Clients Info</a></li>
+            <li><a heref="#Qr page"><i class=" fas fa-qrcode"></i> QR Scaner</a></li>
+            <li><a heref="#mara page"><i class=" fas fa-mobile-phone"></i> Contact Us</a></li>
+            <li><a heref="#setting page"><i class=" fas fa-cogs"></i> Settings</a></li>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <p style="color: rgba(240, 248, 255, 0.503); font-size: small;"><i><b>Blue Banana services,</b>
+                <br>Chitkara University,
+                <br>Rajpura ,Punjab
+            </i><p>
 
         
-            <div class=" Billing-container grid container">
-                <div class="left" 
-                    style="text-align: center; margin-top: 20px; margin-right: 45vh ;margin-left :20px;">
-                        <img src="D:\sem_3\fee projects\billing_system\pay_qr_black.jpg" alt="QR Code" style="width: 50%; height: auto; border-radius: 5px;">
-                        <h2 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #000; margin-top: 20px;">Thank You</h2>
-                    </div></div>
-                </div>
-                <div class="right">
-                    
-                    
-                    <h2>Your Bill</h2>
-                    <table>
-                        <tr>
-                            <th>Item</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                        </tr>
-                        <tr>
-                            <td>Item 1</td>
-                            <td>$10</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>Item 2</td>
-                            <td>$15</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>Item 3</td>
-                            <td>$20</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>Item 4</td>
-                            <td>$25</td>
-                            <td>3</td>
-                        </tr>
-                    </table>
-                    <div class="buttons">
-                        <button>Button 1</button>
-                        <button>Button 2</button>
-                        <button>Button 3</button>
-                    
-                    </div>
-                   
+            
+        </ul>
+    </div>
+ </label>
 
-                </div>
-            </div>
+<!-- silde menu enddddddddd -->
+    <h1 style="text-align: center; color: rgb(255, 255, 255);font-size: 70px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-shadow: 0 0 10px rgba(0, 0, 0, 0.237);">
+        Payment Gateway
+    </h1>
 
-            <!-- <div class="Billing-container grid">
-                <div class="column">
-                <div class="container">
-                <img src="D:\sem_3\fee projects\billing_system\pay_qr_black.jpg" alt="D:\sem_3\fee projects\billing_system\payment_QR.jpg" class="QR_image">
-
-            </div>
+    <div class="container">
+        <div class="left">
+            <img src="../Billing System - Copy/pay_qr_black.jpg" alt="QR Code">
+            <p>Thank you for your payment!</p>
         </div>
-                <div class="column">
-                    <div class="container">
-                        <h2 style="text-align: center;">bill</h2>
-                    </div>
-                </div>
-            </div> -->
-
-
-
+        <div class="right">
+            <h1>Your Bill</h1>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr>
+                    <td>Item 1</td>
+                    <td>$10</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Item 2</td>
+                    <td>$15</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Item 3</td>
+                    <td>$20</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Item 4</td>
+                    <td>$25</td>
+                    <td>3</td>
+                </tr>
+            </table>
+            <div class="button" style="align-self: center;">
+                <button type="button" class="btn btn-success idx-button"> Pay-cash</button>
+              <button type="button" class="btn btn-warning idx-button" onclick= open_payment_gate()>Pay-online</button>
+              <button type="button" class="btn btn-danger idx-button">Cancel</button>
+          </div>
+        </div>
+    </div>
+    <script>
+    document.querySelectorAll('.idx-button').forEach(button => {
+        button.addEventListener('click', function () {
+            window.location.href = 'idx.html'; // Redirect to 'idx.html'
+        });
+    });
 
     
+    </script>
 </body>
 </html>
