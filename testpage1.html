@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Billing Machine</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+.container {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid #343434;
+  padding: 10px;
+  border-radius: 5px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.item-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.item-name {
+  margin-right: 10px;
+}
+input[type="number"] {
+  width: 50px;
+}
+.details {
+  margin-top: 20px;
+}
+.details label {
+  display: block;
+  margin-bottom: 5px;
+}
+.details input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.total {
+  text-align: center;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+  <div>
+<div class="container">
+<h1>Billing Machine</h1>
+<div class="item-list">
+  <div class="item-name">Chips</div>
+  <input type="number" id="chips-quantity" value="0">
+  <button onclick="updateTotal()">+</button>
+</div>
+<div class="item-list">
+  <div class="item-name">Biscuit</div>
+  <input type="number" id="biscuit-quantity" value="0">
+  <button onclick="updateTotal()">+</button>
+</div>
+<div class="item-list">
+  <div class="item-name">Fruits</div>
+  <input type="number" id="fruits-quantity" value="0">
+  <button onclick="updateTotal()">+</button>
+</div>
+
+<div class="details">
+  <label for="name">Name:</label>
+  <input type="text" id="name">
+  <label for="number">Number:</label>
+  <input type="number" id="number">
+  <label for="bday">Birthday:</label>
+  <input type="date" id="bday">
+</div>
+
+<div class="total">
+  <div>Discount:</div>
+  <div>Total: <span id="total-amount">0</span></div>
+</div>
+
+</div>
+
+<div class="container">
+  <h1>Billing Machine</h1>
+  <div class="item-list">
+    <div class="item-name">Chips</div>
+    <input type="number" id="chips-quantity" value="0">
+    <button onclick="updateTotal()">+</button>
+  </div>
+  <div class="item-list">
+    <div class="item-name">Biscuit</div>
+    <input type="number" id="biscuit-quantity" value="0">
+    <button onclick="updateTotal()">+</button>
+  </div>
+  <div class="item-list">
+    <div class="item-name">Fruits</div>
+    <input type="number" id="fruits-quantity" value="0">
+    <button onclick="updateTotal()">+</button>
+  </div>
+  
+  <div class="details">
+    <label for="name">Name:</label>
+    <input type="text" id="name">
+    <label for="number">Number:</label>
+    <input type="number" id="number">
+    <label for="bday">Birthday:</label>
+    <input type="date" id="bday">
+  </div>
+  
+  <div class="total">
+    <div>Discount:</div>
+    <div>Total: <span id="total-amount">0</span></div>
+  </div>
+  
+  </div>
+</div>
+  
+
+<script>
+function updateTotal() {
+  const chipsQuantity = parseInt(document.getElementById("chips-quantity").value) || 0;
+  const biscuitQuantity = parseInt(document.getElementById("biscuit-quantity").value) || 0;
+  const fruitsQuantity = parseInt(document.getElementById("fruits-quantity").value) || 0;
+
+  const totalAmount = (chipsQuantity * 1.5) + (biscuitQuantity * 0.8) + (fruitsQuantity * 2);
+
+  document.getElementById("total-amount").textContent = totalAmount.toFixed(2);
+}
+</script>
+
+</body>
+</html>
