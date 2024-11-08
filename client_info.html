@@ -199,6 +199,22 @@
             transform: translateX(0);
             box-shadow: rgba(0, 0, 0, 0.089);
         }
+
+        .order-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 7px 20px; /* Increased the padding to make the button longer */
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .odd{
+            background-color: #c8c8c8;
+        }
+
     </style>
     <script>
         function toggleDetails(row) {
@@ -207,6 +223,15 @@
                 nextRow.style.display = "table-row"; // Show the details row
             } else {
                 nextRow.style.display = "none"; // Hide the details row
+            }
+        }
+    
+        function confirmOrder() {
+            if (confirm("Are you sure to place order?")) {
+                // Code to place order
+                alert("Order placed successfully!");
+            } else {
+                alert("Order cancelled.");
             }
         }
     </script>
@@ -239,104 +264,179 @@
     <!-- Slider End -->
 
     <div class="container">
-        <h1>PAYMENT HISTORY</h1>
+        <h1>Client Info</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Payment ID</th>
-                    <th>Name</th>
-                    <th>Amount (₹)</th>
-                    <th>Method</th>
-                    <th>Status</th>
+                    <th>Company</th>
+                    <th>Dealer name</th>
+                    <th>Phone no.</th>
+                    <th>Item</th>
+                    <th>Buying Price</th>
+                    <th>MRP</th>
+                    
                 </tr>
             </thead>
             <tbody>
-                <tr onclick="toggleDetails(this)" style="background-color: rgba(0, 34, 255, 0.222);">
-                    <td>2024-09-15</td>
-                    <td>PAY12345</td>
-                    <td>Amit Sharma</td>
-                    <td>₹150</td>
-                    <td>Credit Card</td>
-                    <td>Completed</td>
+                <tr onclick="toggleDetails(this)">
+                    <td>Pepsi co.</td>
+                    <td>Ramesh Sharma</td>
+                    <td>9987640217</td>
+                    <td>Lays</td>
+                    <td>17rs</td>
+                    <td>20rs</td>
                 </tr>
                 <tr class="details-row" style="display:none;">
                     <td colspan="6">
-                        <strong>Items Bought:</strong>
+                        <strong>Place Order:</strong>
                         <ul style="color: white;">
-                            <li>Chips: ₹50</li>
-                            <li>Biscuits: ₹20</li>
-                            <li>Fruits: ₹80</li>
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                            
+                        <style>
+                            
+                        </style>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
                         </ul>
-                        <strong>Discount:</strong> 10%
+                        
                     </td>
                 </tr>
-
-                <tr onclick="toggleDetails(this)" style="background-color: grey">
-                    <td>2024-10-05</td>
-                    <td>PAY12346</td>
-                    <td>Neha Gupta</td>
-                    <td>₹250</td>
-                    <td>Upi</td>
-                    <td>Pending</td>
+                <tr class="odd" onclick="toggleDetails(this)">
+                    <td>Coca Cola</td>
+                    <td>Suresh Kumar</td>
+                    <td>9876543210</td>
+                    <td>Sprite</td>
+                    <td>15rs</td>
+                    <td>18rs</td>
                 </tr>
                 <tr class="details-row" style="display:none;">
                     <td colspan="6">
+                        <strong>Place Order:</strong>
                         <ul style="color: white;">
-                        <strong>Items Bought:</strong>
-<<<<<<< HEAD
-                        <ul style="color: white;">
-=======
-                        <ul>
->>>>>>> 99e22c426bf83ceb91016eb526931d43dfdc2532
-                            <li>Vegetables: ₹100</li>
-                            <li>Rice: ₹150</li>
-                        </ul>
-                        <strong>Discount:</strong> 5%
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
+                    </ul>
                     </td>
                 </tr>
 
-                <tr onclick="toggleDetails(this)" style="background-color: rgba(0, 255, 4, 0.349);">
-                    <td>2024-10-12</td>
-                    <td>PAY12347</td>
-                    <td>Rahul Verma</td>
-                    <td>₹100</td>
-                    <td>Debit Card</td>
-                    <td>Failed</td>
+                <tr onclick="toggleDetails(this)">
+                    <td>Unilever</td>
+                    <td>Geeta Verma</td>
+                    <td>9123456780</td>
+                    <td>Surf Excel</td>
+                    <td>45rs</td>
+                    <td>50rs</td>
                 </tr>
                 <tr class="details-row" style="display:none;">
                     <td colspan="6">
-                        <strong>Items Bought:</strong>
+                        <strong>Place Order:</strong>
                         <ul style="color: white;">
-                            <li>Milk: ₹40</li>
-                            <li>Bread: ₹30</li>
-                            <li>Butter: ₹30</li>
-                        </ul>
-                        <strong>Discount:</strong> 0%
-                    </td>
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
+                    </ul></td>
                 </tr>
 
-                <tr onclick="toggleDetails(this)" style="background-color: rgba(255, 0, 0, 0.349);">
-                    <td>2024-10-15</td>
-                    <td>PAY12348</td>
-                    <td>Pooja Singh</td>
-                    <td>₹300</td>
-                    <td>Cash</td>
-                    <td>Completed</td>
+                <tr class="odd" onclick="toggleDetails(this)">
+                    <td>Nestle</td>
+                    <td>Rajesh Patel</td>
+                    <td>9988776655</td>
+                    <td>Maggi</td>
+                    <td>12rs</td>
+                    <td>15rs</td>
                 </tr>
                 <tr class="details-row" style="display:none;">
                     <td colspan="6">
-                        <strong>Items Bought:</strong>
+                        <strong>Place Order:</strong>
                         <ul style="color: white;">
-                            <li>Soap: ₹50</li>
-                            <li>Shampoo: ₹100</li>
-                            <li>Conditioner: ₹150</li>
-                        </ul>
-                        <strong>Discount:</strong> 15%
-                    </td>
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
+                    </ul></td>
                 </tr>
 
-            </tbody>
+                <tr onclick="toggleDetails(this)">
+                    <td>ITC</td>
+                    <td>Sunita Sharma</td>
+                    <td>9876543211</td>
+                    <td>Bingo</td>
+                    <td>10rs</td>
+                    <td>12rs</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Place Order:</strong>
+                        <ul style="color: white;">
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
+                    </ul></td>
+                </tr>
+
+                <tr class="odd" onclick="toggleDetails(this)">
+                    <td>Britannia</td>
+                    <td>Vikram Singh</td>
+                    <td>9876543212</td>
+                    <td>Good Day</td>
+                    <td>20rs</td>
+                    <td>25rs</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Place Order:</strong>
+                        <ul style="color: white;">
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
+                    </ul> </td>
+                </tr>
+
+                <tr onclick="toggleDetails(this)">
+                    <td>Parle</td>
+                    <td>Ravi Kumar</td>
+                    <td>9876543213</td>
+                    <td>Parle-G</td>
+                    <td>5rs</td>
+                    <td>7rs</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Place Order:</strong>
+                        <ul style="color: white;">
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
+                    </ul></td>
+                </tr>
+
+                <tr class="odd" onclick="toggleDetails(this)">
+                    <td>Amul</td>
+                    <td>Priya Mehta</td>
+                    <td>9876543214</td>
+                    <td>Butter</td>
+                    <td>45rs</td>
+                    <td>50rs</td>
+                </tr>
+                <tr class="details-row" style="display:none;">
+                    <td colspan="6">
+                        <strong>Place Order:</strong>
+                        <ul style="color: white;">
+                            <li></li>
+                            <li>Quantity: <input type="number" min="1" step="1" value="1"></li>
+                        
+                        <button class="order-button" onclick="confirmOrder()">Order</button>
+                    </ul></td>
+                </tr>
+
+                            </tbody>
         </table>
     </div>
 </body>
