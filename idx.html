@@ -357,8 +357,9 @@
                 <ul>
                     <li><a href="user.html"><i class="fas fa-user"></i> Profile</a></li>
                     <li><a href="#clients"><i class="fas fa-address-book"></i> Clients Info</a></li>
-                    <li><a href="#qr"><i class="fas fa-qrcode"></i> QR Scanner</a></li>
+                    <li><a href="payment_gateway.html"><i class="fas fa-qrcode"></i> QR Scanner</a></li>
                     <li><a href="payment_history.html"><i class="fas fa-qrcode"></i> Payment History</a></li>
+                    <li><a href="inventry.html"><i class="fas fa-inventry"></i> Inventry</a></li>
 
                     <br><br>
                     <p style="color: rgba(240, 248, 255, 0.503); font-size: small;">
@@ -479,8 +480,62 @@
             </div>
         </div>
     </section>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"></script>
 
     <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJpt41CvzvYQvB-KTBGqSQWsyogdEJ5TY",
+            authDomain: "billingsystem-865e8.firebaseapp.com",
+            projectId: "billingsystem-865e8",
+            storageBucket: "billingsystem-865e8.appspot.com",
+            messagingSenderId: "732319202825",
+            appId: "1:732319202825:web:106d81803c8d9461bdc2d8",
+            databaseURL: "https://billingsystem-865e8-default-rtdb.firebaseio.com"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Function to update the cart in Firebase
+        function updateDatabaseCart() {
+            const cartItems = [];
+            document.querySelectorAll('.row').forEach(row => {
+                const product = row.querySelector('td:first-child').innerText;
+                const price = parseFloat(row.querySelector('td:nth-child(2)').innerText);
+                const quantity = parseInt(row.querySelector('.quantity-selector input').value);
+                const amount = parseFloat(row.querySelector('.amount').innerText);
+                cartItems.push({ product, price, quantity, amount });
+            });
+
+            firebase.database().ref('cartItems').set(cartItems)
+                .then(() => {
+                    console.log('Cart items saved successfully.');
+                })
+                .catch(error => {
+                    console.error('Error saving cart items:', error);
+                });
+        }
+
+        // Function to save customer details in Firebase
+        function saveCustomerDetails() {
+            const name = document.querySelector('.name').value;
+            const phone = document.querySelector('.phone').value;
+            const date = document.querySelector('.date').value;
+
+            firebase.database().ref('customerDetails').set({ name, phone, date })
+                .then(() => {
+                    console.log('Customer details saved successfully.');
+                })
+                .catch(error => {
+                    console.error('Error saving customer details:', error);
+                });
+        }
+
+        // Quantity adjustment and cart total functions
         function decreaseQuantity(button) {
             const input = button.nextElementSibling;
             let value = parseInt(input.value);
@@ -505,6 +560,7 @@
             const amount = quantity * price;
             input.closest('tr').querySelector('.amount').innerText = amount;
             updateCartTotal();
+            updateDatabaseCart();
         }
 
         function updateCartTotal() {
@@ -540,11 +596,13 @@
             alert('Coupon applied!');
         }
 
+        // Save customer details and cart items on pay button click
         document.querySelector('.pay-button').addEventListener('click', function () {
+            saveCustomerDetails();
+            updateDatabaseCart();
             window.location.href = 'payment_gateway.html';
         });
-
     </script>
 </body>
 
-</html>
+</html> 
