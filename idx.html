@@ -545,54 +545,6 @@
         });
 
     </script>
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"></script>
-    <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDJpt41CvzvYQvB-KTBGqSQWsyogdEJ5TY",
-            authDomain: "billingsystem-865e8.firebaseapp.com",
-            projectId: "billingsystem-865e8",
-            storageBucket: "billingsystem-865e8.appspot.com",
-            messagingSenderId: "732319202825",
-            appId: "1:732319202825:web:106d81803c8d9461bdc2d8",
-            databaseURL: "https://billingsystem-865e8-default-rtdb.firebaseio.com/"
-        };
-
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database(app);
-
-        function updateDatabaseCart() {
-            const cartItems = [];
-            document.querySelectorAll('.row').forEach(row => {
-                const product = row.querySelector('td:first-child').innerText;
-                const price = parseFloat(row.querySelector('td:nth-child(2)').innerText);
-                const quantity = parseInt(row.querySelector('.quantity-selector input').value);
-                const amount = parseFloat(row.querySelector('.amount').innerText);
-                cartItems.push({ product, price, quantity, amount });
-            });
-
-            firebase.database().ref('cartItems').set(cartItems);
-        }
-
-        function updateAmount(input) {
-            const quantity = parseInt(input.value);
-            const price = parseFloat(input.closest('tr').querySelector('td:nth-child(2)').innerText);
-            const amount = quantity * price;
-            input.closest('tr').querySelector('.amount').innerText = amount;
-            updateCartTotal();
-            updateDatabaseCart();
-        }
-
-        function saveCustomerDetails() {
-            const name = document.querySelector('.name').value;
-            const phone = document.querySelector('.phone').value;
-            const date = document.querySelector('.date').value;
-
-            firebase.database().ref('customerDetails').set({ name, phone, date });
-        }
-        document.querySelector('.pay-button').addEventListener('click', saveCustomerDetails);
-    </script>
 </body>
 
 </html>
