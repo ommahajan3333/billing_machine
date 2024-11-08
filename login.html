@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="https://example.com/favicon.ico" type="image/x-icon">
 </head>
-
 <body>
     <div class="video-background">
         <video autoplay muted loop id="bg-video">
@@ -17,7 +15,6 @@
         </video>
         <div class="overlay"></div>
     </div>
-
     <div class="container">
         <div class="header">
             <button id="loginBtn" class="toggle-btn active">Login</button>
@@ -35,10 +32,9 @@
                         <label for="password">Password</label>
                         <input type="password" id="password" placeholder="Enter your password" required>
                     </div>
-                    <button type="submit" class="btn" href="idx.html">Login</button>
+                    <button type="submit" class="btn" id="submit">Login</button>
                 </form>
             </div>
-
             <div class="form-box hidden" id="signupForm">
                 <h2>Sign Up</h2>
                 <form>
@@ -54,13 +50,13 @@
                         <label for="signupPassword">Password</label>
                         <input type="password" id="signupPassword" placeholder="Create a password" required>
                     </div>
-                    <button type="submit" class="btn" href="idx.html">Sign Up</button>
+                    <button type="submit" class="btn" id="submit1">Sign Up</button>
                 </form>
             </div>
         </div>
     </div>
-
+    <script type="module" src="scriptregister.js" defer></script>
+    <script type="module" src="scriptlogin.js" defer></script>
     <script src="script.js"></script>
 </body>
-
 </html>

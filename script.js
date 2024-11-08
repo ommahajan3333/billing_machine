@@ -24,7 +24,7 @@ loginForm.classList.add('active');
         window.location.href = 'idx.html';
     });
 
-    signupForm.addEventListener('submit', (event) => {
+    signupForm.addEventListener('submit1', (event) => {
         event.preventDefault(); 
         window.location.href = 'idx.html';
     });
